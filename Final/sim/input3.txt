@@ -1,0 +1,38 @@
+10111111 // Ô 0: LDA 31  (nạp giá trị ô 31 vào Acc)
+01011110 // Ô 1: ADD 30  (Acc = Acc + ô 30)
+01111101 // Ô 2: AND 29  (Acc = Acc & ô 29)
+10011100 // Ô 3: XOR 28  (Acc = Acc ^ ô 28)
+11011011 // Ô 4: STO 27  (lưu Acc vào ô 27)
+11111010 // Ô 5: JMP 26   (nhảy đến ô 26 - bỏ qua đoạn test SKZ)
+00100000 // Ô 6: SKZ      (nếu Acc=0 thì skip lệnh tiếp theo - dùng để test)
+01000000 // Ô 7: ADD 0    (lệnh này sẽ bị skip nếu SKZ kích hoạt)
+00000000 // Ô 8: HLT      (dừng nếu không bị skip)
+00000000 // Ô 9
+00000000 // Ô 10
+00000000 // Ô 11
+00000000 // Ô 12
+00000000 // Ô 13
+00000000 // Ô 14
+00000000 // Ô 15
+00000000 // Ô 16
+00000000 // Ô 17
+00000000 // Ô 18
+00000000 // Ô 19
+00000000 // Ô 20
+00000000 // Ô 21
+00000000 // Ô 22
+00000000 // Ô 23
+00000000 // Ô 24
+00000000 // Ô 25
+// === Điểm nhảy JMP đến đây (ô 26) ===
+01000000 // Ô 26: ADD 0    (cộng thêm giá trị ô 0 vào Acc)
+11011001 // Ô 27: STO 25   (lưu kết quả vào ô 25)
+10111000 // Ô 28: LDA 24   (nạp giá trị ô 24)
+01010111 // Ô 29: ADD 23   (cộng với ô 23)
+01110110 // Ô 30: AND 22   (AND với ô 22)
+00000000 // Ô 31: HLT      (dừng chương trình)
+
+// === Vùng dữ liệu (các ô được tham chiếu) ===
+// Lưu ý: dữ liệu nên nằm ở vùng nhớ khác (32-63) hoặc ghi đè lên các ô chương trình nếu không dùng nữa
+// Vì đề bài chỉ có 32 ô, tôi đặt dữ liệu tạm ở các ô cuối (đã được dùng làm operand)
+// Nhưng để tránh xung đột, bạn nên mở rộng memory lên 64 ô (32 lệnh + 32 data)
